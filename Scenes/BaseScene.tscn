@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://duxvxleftnvka"]
+[gd_scene load_steps=7 format=3 uid="uid://duxvxleftnvka"]
 
 [ext_resource type="MeshLibrary" uid="uid://b3kydxantc0xq" path="res://MeshLibraries/SpaceLibrary.tres" id="1_143bo"]
 
@@ -17,6 +17,16 @@ sky = SubResource("Sky_ihkdc")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17wik"]
+albedo_color = Color(0.541176, 0.52549, 0.211765, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_1lqd8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14, 0, 26, -1, 0, 1, 1, 0, -1, -14, 0, -2, -1, 0, -1, 1, 0, 1, 2, 0, -2, -1, 0, -1, 1, 0, 1, 2, 0, 18, -1, 0, 1, 1, 0, -1, 14, 0, 18, 0, 0, 0, 0, 0, 0, 14, 0, -16),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -27,11 +37,47 @@ transform = Transform3D(-0.901833, -0.145654, 0.406796, 0, 0.941471, 0.337095, -
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1.0014, 0, 0, 0, 1.0014, 0, 0, 0, 1.0014, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_17wik")
 size = Vector3(100, 2, 100)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+transform = Transform3D(1, 0, 0, 0, 0.218143, 0.975917, 0, -0.975917, 0.218143, 0, 26.5, 12.5)
+fov = 71.6
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_143bo")
+cell_size = Vector3(4, 4, 4)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65530, 65530, 1, 65530, 65531, 1, 65530, 65532, 1, 65530, 65533, 1, 65530, 65534, 1, 65530, 65535, 1, 65530, 0, 1, 65530, 1, 1, 65530, 2, 1, 65530, 3, 1, 65530, 4, 1, 65530, 5, 1, 65531, 65530, 1, 65531, 65531, 1, 65531, 65532, 1, 65531, 65533, 1, 65531, 65534, 1, 65531, 65535, 1, 65531, 0, 1, 65531, 1, 1, 65531, 2, 1, 65531, 3, 1, 65531, 4, 1, 65531, 5, 1, 65532, 65530, 1, 65532, 65531, 1, 65532, 65532, 1, 65532, 65533, 1, 65532, 65534, 1, 65533, 65530, 1, 65533, 65531, 1, 65533, 65532, 1, 65533, 65533, 1, 65533, 65534, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65534, 65530, 1, 65534, 65531, 1, 65534, 65532, 1, 65534, 65533, 1, 65534, 65534, 1, 65534, 0, 1, 65534, 1, 1, 65534, 2, 1, 65534, 3, 1, 65534, 4, 1, 65534, 5, 1, 65535, 65530, 1, 65535, 65531, 1, 65535, 65532, 1, 65535, 65533, 1, 65535, 65534, 1, 65535, 0, 1, 65535, 1, 1, 65535, 2, 1, 65535, 3, 1, 65535, 4, 1, 65535, 5, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 5, 1, 1, 65530, 1, 1, 65531, 1, 1, 65532, 1, 1, 65533, 1, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 5, 1, 2, 65530, 1, 2, 65531, 1, 2, 65532, 1, 2, 65533, 1, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 1, 1, 2, 2, 1, 2, 3, 1, 2, 5, 1, 3, 65530, 1, 3, 65531, 1, 3, 5, 1, 4, 65530, 1, 4, 65531, 1, 4, 65532, 1, 4, 65533, 1, 4, 65534, 1, 4, 65535, 1, 4, 0, 1, 4, 1, 1, 4, 2, 1, 4, 3, 1, 4, 4, 1, 4, 5, 1, 5, 65530, 1, 5, 65531, 1, 5, 65532, 1, 5, 65533, 1, 5, 65534, 1, 5, 65535, 1, 5, 0, 1, 5, 1, 1, 5, 2, 1, 5, 3, 1, 5, 4, 1, 5, 5, 1)
+}
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_1lqd8")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(0, 0, 0, 0.01, 3, 0.01, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(0, 0, 0, 0.01, -3, 0.01, -3, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
