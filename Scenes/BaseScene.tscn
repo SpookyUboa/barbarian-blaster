@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://duxvxleftnvka"]
+[gd_scene load_steps=10 format=3 uid="uid://duxvxleftnvka"]
 
 [ext_resource type="MeshLibrary" uid="uid://b3kydxantc0xq" path="res://MeshLibraries/SpaceLibrary.tres" id="1_143bo"]
+[ext_resource type="PackedScene" uid="uid://d1nwcfvaf5u0a" path="res://Scenes/enemy.tscn" id="2_j5mrh"]
+[ext_resource type="PackedScene" uid="uid://cjywr1eto2rrs" path="res://Models/base.glb" id="3_6c4m0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hqlj4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,13 +29,16 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6obx"]
+albedo_color = Color(0.517647, 0.423529, 0.423529, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oio8v")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.901833, -0.145654, 0.406796, 0, 0.941471, 0.337095, -0.432086, 0.304003, -0.849049, 0, 0, 0)
+transform = Transform3D(0.153356, 0.933087, -0.325316, -0.247752, 0.355001, 0.901439, 0.956609, -0.057643, 0.285616, 0, 0, 0)
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -56,7 +61,7 @@ data = {
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_1lqd8")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+[node name="PathRight" type="CSGPolygon3D" parent="Path3D"]
 polygon = PackedVector2Array(0, 0, 0, 0.01, 3, 0.01, 1, 0)
 mode = 2
 path_node = NodePath("..")
@@ -68,8 +73,9 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+material = SubResource("StandardMaterial3D_u6obx")
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Path3D"]
+[node name="PathLeft" type="CSGPolygon3D" parent="Path3D"]
 polygon = PackedVector2Array(0, 0, 0, 0.01, -3, 0.01, -3, 0)
 mode = 2
 path_node = NodePath("..")
@@ -81,3 +87,11 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+material = SubResource("StandardMaterial3D_u6obx")
+
+[node name="Enemy" parent="Path3D" instance=ExtResource("2_j5mrh")]
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 0.999995, -14, 0, 26)
+speed = 5
+
+[node name="base" parent="." instance=ExtResource("3_6c4m0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -14)
