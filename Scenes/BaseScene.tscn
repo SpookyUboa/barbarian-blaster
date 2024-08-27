@@ -37,10 +37,6 @@ albedo_color = Color(0.517647, 0.423529, 0.423529, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oio8v")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.153356, 0.933087, -0.325316, -0.247752, 0.355001, 0.901439, 0.956609, -0.057643, 0.285616, 0, 0, 0)
-shadow_enabled = true
-
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1.0014, 0, 0, 0, 1.0014, 0, 0, 0, 1.0014, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_17wik")
@@ -94,4 +90,4 @@ transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 0.999995, -14, 0, 26)
 speed = 5
 
 [node name="base" parent="." instance=ExtResource("3_6c4m0")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -14)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -15)

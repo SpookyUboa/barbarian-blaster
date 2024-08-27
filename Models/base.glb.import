@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/base.glb-55fe07f0e8a54e1dedd31ec730be04dc.scn
 
 [params]
 
-nodes/root_type="Node3D"
+nodes/root_type="MeshInstance3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

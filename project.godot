@@ -14,3 +14,7 @@ config/name="Barbarian Blaster"
 run/main_scene="res://Scenes/BaseScene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[filesystem]
+
+import/fbx/enabled=false
