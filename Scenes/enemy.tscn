@@ -6,6 +6,7 @@
 
 [node name="Enemy" type="PathFollow3D" groups=["enemy"]]
 transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 0.999995, 0, 0, 0)
+loop = false
 script = ExtResource("1_p4k56")
 
 [node name="Model" type="MeshInstance3D" parent="."]

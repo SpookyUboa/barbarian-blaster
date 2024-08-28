@@ -16,9 +16,10 @@ func take_damage():
 	
 
 
-func _on_body_entered(body: Node) -> void:
-	print("COLLISION!!!")
-	if "enemy" in body.get_groups():
-		take_damage()
-	else:
-		print("NOT AN ENEMY?!")
+#func _on_body_entered(body: Node) -> void:
+#	print("COLLISION!!!")
+#	if "enemy" in body.get_groups():
+#		take_damage()
+#		body.set_process(false)
+#	else:
+#		print("NOT AN ENEMY?!")
