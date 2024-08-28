@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmwyoae0ds2o2"]
+
+[ext_resource type="PackedScene" uid="uid://dclioe7h5kgad" path="res://Models/base.glb" id="1_qsilc"]
+[ext_resource type="Script" path="res://Models/base.gd" id="2_ocda1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1l8n"]
+size = Vector3(2, 2, 2)
+
+[node name="base" instance=ExtResource("1_qsilc")]
+gravity_scale = 0.0
+max_contacts_reported = 3
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("2_ocda1")
+
+[node name="HealthLabel" type="Label3D" parent="." index="1"]
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 2, 2, 20.0491)
+billboard = 1
+text = "IT IS A HEALTH CONCERN"
+font_size = 480
+outline_size = 127
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_k1l8n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
