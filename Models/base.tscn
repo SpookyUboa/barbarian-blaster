@@ -15,9 +15,9 @@ freeze_mode = 1
 script = ExtResource("2_ocda1")
 
 [node name="HealthLabel" type="Label3D" parent="." index="1"]
-transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 2, 2, 20.0491)
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 2, 2, 15.0491)
 billboard = 1
-text = "IT IS A HEALTH CONCERN"
+text = "STARTING HEALTH"
 font_size = 480
 outline_size = 127
 

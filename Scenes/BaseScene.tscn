@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxvxleftnvka"]
+[gd_scene load_steps=11 format=3 uid="uid://duxvxleftnvka"]
 
 [ext_resource type="MeshLibrary" uid="uid://b3kydxantc0xq" path="res://MeshLibraries/SpaceLibrary.tres" id="1_143bo"]
+[ext_resource type="PackedScene" uid="uid://5e72osxc0hmm" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_cystc"]
 [ext_resource type="PackedScene" uid="uid://d1nwcfvaf5u0a" path="res://Scenes/enemy.tscn" id="2_j5mrh"]
 [ext_resource type="PackedScene" uid="uid://cmwyoae0ds2o2" path="res://Models/base.tscn" id="3_56gw6"]
 
@@ -46,10 +47,7 @@ transform = Transform3D(1.0014, 0, 0, 0, 1.0014, 0, 0, 0, 1.0014, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_17wik")
 size = Vector3(100, 2, 100)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.218143, 0.975917, 0, -0.975917, 0.218143, 0, 26.5, 12.5)
-current = true
-fov = 71.6
+[node name="RayPickerCamera" parent="." instance=ExtResource("1_cystc")]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_143bo")
@@ -92,6 +90,26 @@ material = SubResource("StandardMaterial3D_u6obx")
 
 [node name="Enemy" parent="Path3D" instance=ExtResource("2_j5mrh")]
 transform = Transform3D(-0.999992, 0, -8.74221e-08, 0, 1, 0, 8.74221e-08, 0, -0.999992, -14, 0, 26)
+use_model_front = true
+
+[node name="Enemy2" parent="Path3D" instance=ExtResource("2_j5mrh")]
+transform = Transform3D(-0.999547, 0, -0.0298188, 0, 1, 0, 0.0298188, 0, -0.999547, -14.1637, 0, 21.0028)
+progress = 5.0
+use_model_front = true
+
+[node name="Enemy3" parent="Path3D" instance=ExtResource("2_j5mrh")]
+transform = Transform3D(-0.999708, 0, -0.0238105, 0, 1, 0, 0.0238105, 0, -0.999708, -14.2983, 0, 16.0045)
+progress = 10.0
+use_model_front = true
+
+[node name="Enemy4" parent="Path3D" instance=ExtResource("2_j5mrh")]
+transform = Transform3D(-0.999871, 0, -0.0155522, 0, 1, 0, 0.0155522, 0, -0.999871, -14.3981, 0, 11.0055)
+progress = 15.0
+use_model_front = true
+
+[node name="Enemy5" parent="Path3D" instance=ExtResource("2_j5mrh")]
+transform = Transform3D(-0.999991, 0, -0.00126281, 0, 1, 0, 0.00126281, 0, -0.999991, -14.4443, 0, 6.00569)
+progress = 20.0
 use_model_front = true
 
 [node name="base" parent="." instance=ExtResource("3_56gw6")]
