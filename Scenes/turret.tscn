@@ -7,3 +7,8 @@
 [node name="turret" instance=ExtResource("1_qngod")]
 script = ExtResource("2_asckj")
 projectile = ExtResource("2_grgyy")
+
+[node name="Timer" type="Timer" parent="." index="3"]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
