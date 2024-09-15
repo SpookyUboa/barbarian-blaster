@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://duxvxleftnvka"]
+[gd_scene load_steps=13 format=3 uid="uid://duxvxleftnvka"]
 
 [ext_resource type="MeshLibrary" uid="uid://b3kydxantc0xq" path="res://MeshLibraries/SpaceLibrary.tres" id="1_143bo"]
 [ext_resource type="PackedScene" uid="uid://5e72osxc0hmm" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_cystc"]
 [ext_resource type="PackedScene" uid="uid://d1nwcfvaf5u0a" path="res://Scenes/enemy.tscn" id="2_j5mrh"]
 [ext_resource type="PackedScene" uid="uid://cmwyoae0ds2o2" path="res://Models/base.tscn" id="3_56gw6"]
+[ext_resource type="Script" path="res://Scenes/TurretManager.gd" id="5_vl2hw"]
+[ext_resource type="PackedScene" uid="uid://2dvp65fy17kr" path="res://Scenes/turret.tscn" id="6_hpwy0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hqlj4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,8 +49,9 @@ transform = Transform3D(1.0014, 0, 0, 0, 1.0014, 0, 0, 0, 1.0014, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_17wik")
 size = Vector3(100, 2, 100)
 
-[node name="RayPickerCamera" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("1_cystc")]
+[node name="RayPickerCamera" parent="." node_paths=PackedStringArray("gridmap", "turret_manager") instance=ExtResource("1_cystc")]
 gridmap = NodePath("../GridMap")
+turret_manager = NodePath("../TurretManager")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_143bo")
@@ -113,5 +116,9 @@ transform = Transform3D(-0.999991, 0, -0.00126281, 0, 1, 0, 0.00126281, 0, -0.99
 progress = 20.0
 use_model_front = true
 
-[node name="base" parent="." instance=ExtResource("3_56gw6")]
+[node name="Base" parent="." instance=ExtResource("3_56gw6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -14)
+
+[node name="TurretManager" type="Node3D" parent="."]
+script = ExtResource("5_vl2hw")
+turret = ExtResource("6_hpwy0")
