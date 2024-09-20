@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1nwcfvaf5u0a" path="res://Scenes/enemy.tscn" id="2_j5mrh"]
 [ext_resource type="PackedScene" uid="uid://cmwyoae0ds2o2" path="res://Models/base.tscn" id="3_56gw6"]
 [ext_resource type="Script" path="res://Scenes/TurretManager.gd" id="5_vl2hw"]
-[ext_resource type="PackedScene" uid="uid://2dvp65fy17kr" path="res://Scenes/turret.tscn" id="6_hpwy0"]
+[ext_resource type="PackedScene" uid="uid://2dvp65fy17kr" path="res://Scenes/turret.tscn" id="6_not4y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hqlj4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -124,6 +124,7 @@ speed = 5
 [node name="Base" parent="." instance=ExtResource("3_56gw6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -14)
 
-[node name="TurretManager" type="Node3D" parent="."]
+[node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_vl2hw")
-turret = ExtResource("6_hpwy0")
+turret = ExtResource("6_not4y")
+enemy_path = NodePath("../Path3D")
