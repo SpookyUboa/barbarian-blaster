@@ -2,19 +2,22 @@ extends Node3D
 
 @export var projectile: PackedScene
 @export var turret_range := 10.0
+@export var enemy_path : Path3D
 
 @onready var cannon: MeshInstance3D = $Cannon
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var enemy_path : Path3D
+
 var target: PathFollow3D
 
 func _physics_process(delta: float) -> void:
 	target = find_best_target()
 	if target:
-		cannon.look_at(target.global_position, Vector3.UP, true)
+		look_at(target.global_position, Vector3.UP, false)
 
 func _on_timer_timeout() -> void:
 	if target:
+		animation_player.play("Shot")
 		var shot = projectile.instantiate()
 		add_child(shot)
 		shot.global_position = cannon.global_position

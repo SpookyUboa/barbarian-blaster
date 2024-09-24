@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1nwcfvaf5u0a"]
+[gd_scene load_steps=9 format=3 uid="uid://d1nwcfvaf5u0a"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_p4k56"]
 
@@ -6,16 +6,71 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pe0g2"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oin80"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 0.254902, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xsvde"]
+
+[sub_resource type="Animation" id="Animation_hvem3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w56u5"]
+resource_name = "TakeDamage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k22a5"]
+_data = {
+"RESET": SubResource("Animation_hvem3"),
+"TakeDamage": SubResource("Animation_w56u5")
+}
+
 [node name="Enemy" type="PathFollow3D" groups=["enemy"]]
 transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 0.999995, 0, 0, 0)
 loop = false
 script = ExtResource("1_p4k56")
-speed = 50
+speed = 10
 
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_latao")
 
 [node name="EnemyArea3D" type="Area3D" parent="." groups=["enemy_area"]]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyArea3D"]
 shape = SubResource("CapsuleShape3D_pe0g2")
+
+[node name="DamageHighlight" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_oin80")
+mesh = SubResource("CapsuleMesh_xsvde")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k22a5")
+}

@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://sqh87wh7crd"]
+
+[ext_resource type="Script" path="res://Scenes/EnemyPath.gd" id="1_ewvf0"]
+[ext_resource type="PackedScene" uid="uid://d1nwcfvaf5u0a" path="res://Scenes/enemy.tscn" id="2_dimix"]
+
+[sub_resource type="Curve3D" id="Curve3D_1lqd8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14, 0, 26, -1, 0, 1, 1, 0, -1, -14, 0, -2, -1, 0, -1, 1, 0, 1, 2, 0, -2, -1, 0, -1, 1, 0, 1, 2, 0, 18, -1, 0, 1, 1, 0, -1, 14, 0, 18, 0, 0, 0, 0, 0, 0, 14, 0, -14),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6obx"]
+albedo_color = Color(0.517647, 0.423529, 0.423529, 1)
+
+[node name="EnemyPath" type="Path3D"]
+curve = SubResource("Curve3D_1lqd8")
+script = ExtResource("1_ewvf0")
+enemy_scene = ExtResource("2_dimix")
+
+[node name="PathRight" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0.01, 3, 0.01, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_u6obx")
+
+[node name="PathLeft" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0.01, -3, 0.01, -3, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_u6obx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

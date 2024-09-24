@@ -1,8 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://2dvp65fy17kr"]
+[gd_scene load_steps=7 format=3 uid="uid://2dvp65fy17kr"]
 
 [ext_resource type="PackedScene" uid="uid://d3mgmj0nsjuig" path="res://Models/turret.glb" id="1_qngod"]
 [ext_resource type="Script" path="res://Scenes/turret.gd" id="2_asckj"]
 [ext_resource type="PackedScene" uid="uid://nned5gjjqfxu" path="res://Scenes/projectile.tscn" id="2_grgyy"]
+
+[sub_resource type="Animation" id="Animation_luxoh"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cannon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.3), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rjw13"]
+resource_name = "Shot"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cannon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.3), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqhyf"]
+_data = {
+"RESET": SubResource("Animation_luxoh"),
+"Shot": SubResource("Animation_rjw13")
+}
 
 [node name="turret" instance=ExtResource("1_qngod")]
 script = ExtResource("2_asckj")
@@ -10,5 +48,10 @@ projectile = ExtResource("2_grgyy")
 
 [node name="Timer" type="Timer" parent="." index="3"]
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_jqhyf")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
