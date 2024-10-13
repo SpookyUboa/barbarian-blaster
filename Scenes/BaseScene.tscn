@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://duxvxleftnvka"]
+[gd_scene load_steps=31 format=3 uid="uid://duxvxleftnvka"]
 
 [ext_resource type="MeshLibrary" uid="uid://b3kydxantc0xq" path="res://MeshLibraries/SpaceLibrary.tres" id="1_143bo"]
 [ext_resource type="PackedScene" uid="uid://5e72osxc0hmm" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_cystc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://nned5gjjqfxu" path="res://Scenes/projectile.tscn" id="7_kr2ap"]
 [ext_resource type="Script" path="res://Scenes/Bank.gd" id="8_vn4gm"]
 [ext_resource type="PackedScene" uid="uid://coaecjtvw42ix" path="res://Difficulty Manager/difficulty_manager.tscn" id="9_a3jtf"]
+[ext_resource type="PackedScene" uid="uid://v5snvhmkqvl8" path="res://UI/victory_layer.tscn" id="10_m2en8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hqlj4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -249,8 +250,15 @@ data = {
 "cells": PackedInt32Array(65530, 65530, 1, 65530, 65531, 1, 65530, 65532, 1, 65530, 65533, 1, 65530, 65534, 1, 65530, 65535, 1, 65530, 0, 1, 65530, 1, 1, 65530, 2, 1, 65530, 3, 1, 65530, 4, 1, 65530, 5, 1, 65531, 65530, 1, 65531, 65531, 1, 65531, 65532, 1, 65531, 65533, 1, 65531, 65534, 1, 65531, 65535, 1, 65531, 0, 1, 65531, 1, 1, 65531, 2, 1, 65531, 3, 1, 65531, 4, 1, 65531, 5, 1, 65532, 65530, 1, 65532, 65531, 1, 65532, 65532, 1, 65532, 65533, 1, 65532, 65534, 1, 65533, 65530, 1, 65533, 65531, 1, 65533, 65532, 1, 65533, 65533, 1, 65533, 65534, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65534, 65530, 1, 65534, 65531, 1, 65534, 65532, 1, 65534, 65533, 1, 65534, 65534, 1, 65534, 0, 1, 65534, 1, 1, 65534, 2, 1, 65534, 3, 1, 65534, 4, 1, 65534, 5, 1, 65535, 65530, 1, 65535, 65531, 1, 65535, 65532, 1, 65535, 65533, 1, 65535, 65534, 1, 65535, 0, 1, 65535, 1, 1, 65535, 2, 1, 65535, 3, 1, 65535, 4, 1, 65535, 5, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 5, 1, 1, 65530, 1, 1, 65531, 1, 1, 65532, 1, 1, 65533, 1, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 5, 1, 2, 65530, 1, 2, 65531, 1, 2, 65532, 1, 2, 65533, 1, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 1, 1, 2, 2, 1, 2, 3, 1, 2, 5, 1, 3, 65530, 1, 3, 65531, 1, 3, 5, 1, 4, 65530, 1, 4, 65531, 1, 4, 65532, 1, 4, 65533, 1, 4, 65534, 1, 4, 65535, 1, 4, 0, 1, 4, 1, 1, 4, 2, 1, 4, 3, 1, 4, 4, 1, 4, 5, 1, 5, 65530, 1, 5, 65531, 1, 5, 65532, 1, 5, 65533, 1, 5, 65534, 1, 5, 65535, 1, 5, 0, 1, 5, 1, 1, 5, 2, 1, 5, 3, 1, 5, 4, 1, 5, 5, 1)
 }
 
-[node name="EnemyPath" parent="." node_paths=PackedStringArray("difficulty_manager") instance=ExtResource("3_3atlg")]
+[node name="EnemyPath" parent="." node_paths=PackedStringArray("difficulty_manager", "victory_layer") instance=ExtResource("3_3atlg")]
 difficulty_manager = NodePath("../DifficultyManager")
+victory_layer = NodePath("../VictoryLayer")
+
+[node name="PathRight" parent="EnemyPath" index="0"]
+path_local = true
+
+[node name="PathLeft" parent="EnemyPath" index="1"]
+path_local = true
 
 [node name="Base" parent="." instance=ExtResource("3_56gw6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -14)
@@ -283,6 +291,12 @@ label_settings = SubResource("LabelSettings_s7h3q")
 [node name="DifficultyManager" parent="." instance=ExtResource("9_a3jtf")]
 enemy_health_curve = SubResource("Curve_og3ji")
 
+[node name="VictoryLayer" parent="." instance=ExtResource("10_m2en8")]
+visible = false
+
 [connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]
+[connection signal="pressed" from="VictoryLayer/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/RetryButton" to="EnemyPath" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VictoryLayer/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/QuitButton" to="EnemyPath" method="_on_quit_button_pressed"]
 
 [editable path="EnemyPath"]
+[editable path="VictoryLayer"]
