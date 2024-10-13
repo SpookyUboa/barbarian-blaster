@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://duxvxleftnvka"]
+[gd_scene load_steps=28 format=3 uid="uid://duxvxleftnvka"]
 
 [ext_resource type="MeshLibrary" uid="uid://b3kydxantc0xq" path="res://MeshLibraries/SpaceLibrary.tres" id="1_143bo"]
 [ext_resource type="PackedScene" uid="uid://5e72osxc0hmm" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_cystc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/TurretManager.gd" id="5_vl2hw"]
 [ext_resource type="Script" path="res://Scenes/turret.gd" id="6_nspde"]
 [ext_resource type="PackedScene" uid="uid://nned5gjjqfxu" path="res://Scenes/projectile.tscn" id="7_kr2ap"]
+[ext_resource type="Script" path="res://Scenes/Bank.gd" id="8_vn4gm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hqlj4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -211,6 +212,11 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_s7h3q"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -245,3 +251,23 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0,
 script = ExtResource("5_vl2hw")
 turret = SubResource("PackedScene_14lxk")
 enemy_path = NodePath("../EnemyPath")
+
+[node name="Bank" type="MarginContainer" parent="." groups=["bank"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("8_vn4gm")
+
+[node name="Label" type="Label" parent="Bank"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_s7h3q")
