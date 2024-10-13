@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_cm80o")
 [node name="projectile" type="Area3D"]
 top_level = true
 script = ExtResource("1_i06c8")
-speed = 50.0
+speed = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ogxdj")
