@@ -20,13 +20,3 @@ func _ready() -> void:
 
 func take_damage():
 	current_health -= 1
-	
-
-
-#func _on_body_entered(body: Node) -> void:
-#	print("COLLISION!!!")
-#	if "enemy" in body.get_groups():
-#		take_damage()
-#		body.set_process(false)
-#	else:
-#		print("NOT AN ENEMY?!")
