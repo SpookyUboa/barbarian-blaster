@@ -25,12 +25,4 @@ func enemy_defeated() -> void:
 		for child in get_children():
 			if child is PathFollow3D:
 				return
-		print("YOU WON!")
-		victory_layer.show()
-
-
-func _on_retry_button_pressed() -> void:
-	get_tree().reload_current_scene()
-
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+		victory_layer.victory()

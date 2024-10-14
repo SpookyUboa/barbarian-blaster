@@ -2,7 +2,6 @@ extends Node3D
 
 @export var max_health : int = 10
 @export var defeat_layer : CanvasLayer
-@export var defeat_message : Label
 @onready var health_label: Label3D = $HealthLabel
 
 var current_health : int:
@@ -14,7 +13,6 @@ var current_health : int:
 		var blended_color = red.lerp(white,float(current_health) / float(max_health))
 		health_label.modulate = blended_color
 		if current_health < 1:
-			defeat_message.text = "DEFEAT"
 			defeat_layer.show()
 
 func _ready() -> void:
@@ -23,3 +21,9 @@ func _ready() -> void:
 
 func take_damage():
 	current_health -= 1
+
+func _on_retry_button_pressed() -> void:
+	get_tree().reload_current_scene()
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

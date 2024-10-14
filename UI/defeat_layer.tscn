@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://v5snvhmkqvl8"]
-
-[ext_resource type="Texture2D" uid="uid://cqu6xgbm3uj36" path="res://Assets/star.png" id="1_bnvcs"]
+[gd_scene load_steps=2 format=3 uid="uid://bdmecyovfsbif"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_moyrq"]
 font_size = 96
@@ -33,33 +31,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "VICTORY"
+text = "DEFEAT"
 label_settings = SubResource("LabelSettings_moyrq")
 horizontal_alignment = 1
-
-[node name="StarContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Star1" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/StarContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("1_bnvcs")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Star2" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/StarContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("1_bnvcs")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Star3" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/StarContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("1_bnvcs")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
