@@ -26,3 +26,10 @@ func enemy_defeated() -> void:
 			if child is PathFollow3D:
 				return
 		victory_layer.victory()
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+func _on_retry_button_pressed() -> void:
+	get_tree().reload_current_scene()

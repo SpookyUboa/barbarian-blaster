@@ -267,8 +267,9 @@ path_local = true
 [node name="PathLeft" parent="EnemyPath" index="1"]
 path_local = true
 
-[node name="Base" parent="." instance=ExtResource("3_56gw6")]
+[node name="Base" parent="." node_paths=PackedStringArray("defeat_layer") instance=ExtResource("3_56gw6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14, 0, -14)
+defeat_layer = NodePath("../DefeatLayer")
 
 [node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_vl2hw")
